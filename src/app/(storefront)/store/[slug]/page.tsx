@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, use } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star, MapPin, Calendar, MessageSquare, ShieldCheck, Grid, Info } from 'lucide-react';
@@ -28,7 +28,8 @@ const getProductsBySeller = (sellerId: string) => {
   return products.filter(p => p.sellerId === sellerId);
 };
 
-export default function StorePage({ params }: { params: { slug: string } }) {
+export default function StorePage({ params }: { params: Promise<{ slug: string }> }) {
+  const unwrappedParams = use(params);
   const [activeTab, setActiveTab] = useState<'products' | 'about' | 'reviews'>('products');
   const storeProducts = getProductsBySeller(sellerInfo.id) || products.slice(0, 8); // Fallback to some products if none match
 
