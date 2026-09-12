@@ -1,6 +1,5 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
@@ -29,7 +28,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "recharts"],
   },
-  // Allow local and LAN access without HMR cross-origin blocking
   allowedDevOrigins: [
     "localhost",
     "127.0.0.1",
@@ -38,4 +36,4 @@ const nextConfig: NextConfig = {
   ],
 };
 
-export default nextConfig;
+module.exports = nextConfig;
