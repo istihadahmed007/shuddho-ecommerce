@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ShieldCheck, Truck, RotateCcw, Phone, Mail, MapPin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -62,13 +63,23 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-[#C5922E] flex items-center justify-center text-[#14291E] font-serif font-bold text-lg">
-                শুদ্ধ
+            <div className="flex items-center gap-3">
+              <div className="relative w-11 h-11 rounded-xl overflow-hidden bg-[#FAF7F2] p-0.5 border border-white/20 shadow-xs shrink-0">
+                <Image
+                  src="/shuddho-logo.png"
+                  alt="Shuddho - Pure & Authentic"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <span className="text-2xl font-serif font-bold text-white tracking-tight">
-                SHUDDHO
-              </span>
+              <div className="flex flex-col">
+                <span className="text-2xl font-serif font-bold text-white tracking-tight leading-none">
+                  SHUDDHO
+                </span>
+                <span className="text-[10px] uppercase tracking-widest text-[#C5922E] font-semibold mt-1">
+                  Pure & Authentic
+                </span>
+              </div>
             </div>
             <p className="text-xs sm:text-sm text-[#A8A095] max-w-sm leading-relaxed">
               Preserving the culinary heritage of Bengal. Handcrafted sun-dried Biulir dal bori, crispy samosas, artisan fish patties, and appetizers—crafted with authentic taste and uncompromising quality.

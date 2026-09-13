@@ -7,20 +7,34 @@ import {
 } from 'lucide-react';
 import {
   categories,
-  getFeaturedProducts,
-  getBestSellers,
-  getNewArrivals,
+  getProductById,
   coupons,
   testimonials,
 } from '@/lib/data';
+import type { Product } from '@/types';
 import { Hero3DCanvas } from '@/components/home/Hero3DCanvas';
 import { FoodStorySection } from '@/components/home/FoodStorySection';
 import { ProductTiltCard } from '@/components/home/ProductTiltCard';
 
 export default function HomePage() {
-  const featuredProducts = getFeaturedProducts();
-  const bestSellers = getBestSellers();
-  const newArrivals = getNewArrivals();
+  // Curation: Distribute products cleanly across sections without any duplicate repetition
+  // 1. Flagship Signature Essentials (4 products, one from each category)
+  const featuredProductIds = ['prod-bori-01', 'prod-herb-oil-01', 'prod-tiramisu-01', 'prod-sauce-01'];
+  const featuredProducts = featuredProductIds
+    .map((id) => getProductById(id))
+    .filter((p): p is Product => Boolean(p));
+
+  // 2. Customer Favorites / Top Rated (4 distinct products)
+  const bestSellerProductIds = ['prod-samosa-01', 'prod-garlic-pickle-01', 'prod-pizza-01', 'prod-cake-01'];
+  const bestSellers = bestSellerProductIds
+    .map((id) => getProductById(id))
+    .filter((p): p is Product => Boolean(p));
+
+  // 3. Savory Kitchen & Coastal Catch (Remaining 3 distinct products)
+  const artisanalPantryProductIds = ['prod-patty-01', 'prod-rolls-01', 'prod-kofta-01'];
+  const artisanalPantry = artisanalPantryProductIds
+    .map((id) => getProductById(id))
+    .filter((p): p is Product => Boolean(p));
 
   return (
     <div className="flex flex-col w-full">
@@ -38,7 +52,7 @@ export default function HomePage() {
               Explore Our Products
             </h2>
             <p className="text-sm text-[#5F6D63] mt-2">
-              From sun-dried handmade Biulir dal bori to artisan snacks and coastal delicacies.
+              From sun-dried handmade Biulir dal bori to artisan snacks, hair elixirs, and sweets.
             </p>
           </div>
 
@@ -82,7 +96,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. FEATURED PRODUCTS (DATA-DRIVEN) */}
+      {/* 3. FEATURED PRODUCTS (SIGNATURE ESSENTIALS) */}
       <section className="py-14 sm:py-20 bg-[#FAF7F2] border-b border-[#E8E2D8]">
         <div className="container-custom mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
@@ -91,10 +105,10 @@ export default function HomePage() {
                 Flagship Essentials
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#18221B] mt-1 font-serif">
-                Featured Products
+                Featured Collections
               </h2>
               <p className="text-xs sm:text-sm text-[#5F6D63] mt-1">
-                Handcrafted snacks, sun-cured bori, and gourmet artisan seafood.
+                Curated highlights spanning pure pantry staples, herbal hair care, and handcrafted desserts.
               </p>
             </div>
             <Link
@@ -106,7 +120,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
               <ProductTiltCard key={product.id} product={product} />
             ))}
@@ -126,10 +140,10 @@ export default function HomePage() {
                 Household Favorites
               </span>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#18221B] mt-1 font-serif">
-                Best Sellers in Bangladesh
+                Customer Top Picks
               </h2>
               <p className="text-xs sm:text-sm text-[#5F6D63] mt-1">
-                Verified favorites based on real repeat customer purchases.
+                Verified favorites based on real repeat customer purchases and tea-time snacks.
               </p>
             </div>
             <Link
@@ -141,7 +155,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {bestSellers.map((product) => (
               <ProductTiltCard key={product.id} product={product} />
             ))}
@@ -149,7 +163,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. REAL OFFERS & PROMOTIONS (NO FAKE COUNTDOWNS) */}
+      {/* 6. REAL OFFERS & PROMOTIONS */}
       <section className="py-14 sm:py-20 bg-[#163A29] text-white relative overflow-hidden">
         {/* Decorative backdrop */}
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-[#C5922E]/15 rounded-full blur-3xl pointer-events-none" />
@@ -214,31 +228,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. NEW ARRIVALS */}
+      {/* 7. KITCHEN CRAFT & COASTAL CATCH (EXCLUSIVE FRESH DELICACIES) */}
       <section className="py-14 sm:py-20 bg-[#FAF7F2] border-b border-[#E8E2D8]">
         <div className="container-custom mx-auto">
           <div className="flex items-center justify-between mb-10">
             <div>
               <span className="text-xs font-semibold uppercase tracking-widest text-[#C5922E]">
-                Seasonal Harvest
+                Kitchen Craft & Coastal Catch
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-[#18221B] mt-1 font-serif">
-                Fresh Harvest & New Arrivals
+                Artisan Savories & Specialties
               </h2>
               <p className="text-xs sm:text-sm text-[#5F6D63] mt-1">
-                Recently milled grains, cold-pressed small batches, and seasonal spice cures.
+                Hand-rolled prime meatballs, crumbed spring rolls, and fresh Bay of Bengal fish patties.
               </p>
             </div>
             <Link
-              href="/shop?category=new-arrivals"
+              href="/shop"
               className="text-xs sm:text-sm font-semibold text-[#163A29] hover:underline"
             >
-              See All Arrivals →
+              See All Delicacies →
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {newArrivals.map((product) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {artisanalPantry.map((product) => (
               <ProductTiltCard key={product.id} product={product} />
             ))}
           </div>

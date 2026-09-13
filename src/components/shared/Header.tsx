@@ -114,16 +114,22 @@ export const Header: React.FC = () => {
           </button>
 
           {/* Brand Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 group">
-            <div className="w-9 h-9 rounded-xl bg-[#163A29] flex items-center justify-center text-white shadow-xs group-hover:bg-[#0F291D] transition-colors">
-              <span className="font-serif font-bold text-lg text-[#C5922E]">শুদ্ধ</span>
+          <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
+            <div className="relative h-11 w-11 sm:h-12 sm:w-12 rounded-xl overflow-hidden bg-[#FAF7F2] p-0.5 border border-[#E8E2D8] shadow-xs group-hover:border-[#163A29]/40 transition-colors shrink-0">
+              <Image
+                src="/shuddho-logo.png"
+                alt="Shuddho - Pure & Authentic"
+                fill
+                priority
+                className="object-contain"
+              />
             </div>
             <div className="flex flex-col">
               <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#163A29] leading-none font-serif">
                 SHUDDHO
               </span>
-              <span className="text-[9px] uppercase tracking-widest text-[#C5922E] font-semibold mt-0.5">
-                Naturals & Pantry
+              <span className="text-[10px] uppercase tracking-widest text-[#C5922E] font-semibold mt-0.5">
+                Pure & Authentic
               </span>
             </div>
           </Link>
@@ -323,11 +329,19 @@ export const Header: React.FC = () => {
           {/* Drawer Panel */}
           <div className="relative w-4/5 max-w-xs bg-white h-full shadow-2xl z-10 flex flex-col overflow-y-auto">
             <div className="p-4 border-b border-[#E8E2D8] flex items-center justify-between bg-[#FAF7F2]">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-[#163A29] flex items-center justify-center text-white font-serif font-bold text-sm">
-                  শু
+              <div className="flex items-center gap-2.5">
+                <div className="relative w-9 h-9 rounded-lg overflow-hidden bg-white p-0.5 border border-[#E8E2D8] shrink-0">
+                  <Image
+                    src="/shuddho-logo.png"
+                    alt="Shuddho Logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
-                <span className="font-serif font-bold text-base text-[#163A29]">SHUDDHO</span>
+                <div className="flex flex-col">
+                  <span className="font-serif font-bold text-base text-[#163A29] leading-tight">SHUDDHO</span>
+                  <span className="text-[9px] uppercase tracking-wider text-[#C5922E] font-semibold">Pure & Authentic</span>
+                </div>
               </div>
               <button
                 onClick={() => setMobileMenuOpen(false)}

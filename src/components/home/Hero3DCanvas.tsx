@@ -128,12 +128,19 @@ export const Hero3DCanvas: React.FC = () => {
           {/* ---------------- LEFT COLUMN (40% Desktop): EDITORIAL STORYTELLING ---------------- */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
             
-            {/* Editorial Category Pill */}
+            {/* Editorial Category Pill with Official Logo */}
             <div
               style={{ animationDelay: '0.1s' }}
-              className="animate-fade-in inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 border border-[#E8E2D8] shadow-xs backdrop-blur-xs text-xs font-semibold tracking-wide text-[#163A29]"
+              className="animate-fade-in inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/90 border border-[#E8E2D8] shadow-xs backdrop-blur-xs text-xs font-semibold tracking-wide text-[#163A29]"
             >
-              <Sparkles size={14} className="text-[#C5922E]" />
+              <div className="relative w-5 h-5 rounded-md overflow-hidden shrink-0">
+                <Image
+                  src="/shuddho-logo.png"
+                  alt="Shuddho Pure & Authentic"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <span className="uppercase tracking-widest text-[11px] text-[#8C6D23] font-bold">
                 Shuddho Pure Collection
               </span>
@@ -324,9 +331,9 @@ export const Hero3DCanvas: React.FC = () => {
                       </p>
                     </div>
                     <div className="text-right">
-                      <span className="text-sm sm:text-base font-extrabold text-[#163A29]">৳540</span>
+                      <span className="text-sm sm:text-base font-extrabold text-[#163A29]">৳460</span>
                       <Link
-                        href="/shop"
+                        href="/product/slow-infused-rosemary-botanical-hair-oil"
                         className="block text-[11px] font-semibold text-[#C5922E] hover:underline"
                       >
                         View Product →

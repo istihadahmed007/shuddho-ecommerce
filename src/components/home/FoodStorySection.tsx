@@ -4,13 +4,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, CheckCircle2, ShieldCheck, MapPin } from 'lucide-react';
-import { products } from '@/lib/data';
-import { ProductTiltCard } from './ProductTiltCard';
 
 export const FoodStorySection: React.FC = () => {
-  // Select authentic food products
-  const foodHighlights = products.filter((p) => p.categoryId === 'cat-food-grocery').slice(0, 3);
-
   return (
     <section className="py-16 sm:py-24 bg-white border-b border-[#E8E2D8] overflow-hidden">
       <div className="container-custom mx-auto">
@@ -97,28 +92,6 @@ export const FoodStorySection: React.FC = () => {
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
-          </div>
-        </div>
-
-        {/* Featured Food Trio Grid */}
-        <div className="pt-6">
-          <div className="flex items-center justify-between mb-8">
-            <div>
-              <h3 className="text-2xl font-bold text-[#18221B]">Pantry Essentials</h3>
-              <p className="text-xs sm:text-sm text-[#5F6D63] mt-0.5">Handcrafted Dal Bori and artisan wild fish patties</p>
-            </div>
-            <Link
-              href="/shop?category=food-grocery"
-              className="text-xs sm:text-sm font-semibold text-[#163A29] hover:underline"
-            >
-              View all ({foodHighlights.length}) →
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {foodHighlights.map((product) => (
-              <ProductTiltCard key={product.id} product={product} />
-            ))}
           </div>
         </div>
       </div>

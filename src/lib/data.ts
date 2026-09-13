@@ -71,7 +71,7 @@ export const sellers: Seller[] = [
     userId: "u-admin-1",
     storeName: "SHUDDHO Official Flagship",
     storeSlug: "shuddho-official",
-    storeLogo: "https://ui-avatars.com/api/?name=SH&background=163A29&color=FAF7F2&size=120",
+    storeLogo: "/shuddho-logo.png",
     description: "Certified pure Bangladeshi consumer goods directly from verified agro-farms and laboratory facilities.",
     rating: 4.9,
     reviewCount: 4892,
